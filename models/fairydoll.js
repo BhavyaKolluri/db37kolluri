@@ -4,4 +4,4 @@ name: String,
 color: String,
 cost: Number
 })
-module.exports = mongoose.model("Fairydoll",fairydollSchema)
+module.exports = mongoose.model("fairydoll",fairydollSchema)

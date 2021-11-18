@@ -1,26 +1,26 @@
 var Fairydoll = require('../models/fairydoll');
 // List of all fairydolls
-exports.fairydoll_list = async function(req, res) {
-    try{
-    theFairydolls = await Fairydoll.find();
-    res.send(theFairydolls);
-    }
-    catch(err){
-    res.status(500);
-    res.send(`{"error": ${err}}`);
+exports.fairydoll_list = async function(req, res) { 
+    try{ 
+        thefairydoll = await Fairydoll.find(); 
+        res.send(thefairydoll); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+}; 
+// for a specific fairydoll.
+exports.fairydoll_detail = async function(req, res) {
+    console.log("detail" + req.params.id)
+    try {
+    result = await Fairydoll.findById( req.params.id)
+    res.send(result)
+    } catch (error) {
+    res.status(500)
+    res.send(`{"error": document for id ${req.params.id} not found`);
     }
    };
-// for a specific firydoll. 
-exports.fairydoll_detail = async function(req, res) { 
-    console.log("detail"  + req.params.id) 
-    try { 
-        result = await Fairydoll.findById( req.params.id) 
-        res.send(result) 
-    } catch (error) { 
-        res.status(500) 
-        res.send(`{"error": document for id ${req.params.id} not found`); 
-    } 
-}; 
 
 // Handle fairydoll create on POST.
 exports.fairydoll_create_post = async function(req, res) {
@@ -99,7 +99,8 @@ exports.fairydoll_delete = async function(req, res) {
 exports.fairydoll_view_one_Page = async function(req, res) {
     console.log("single view for id " + req.query.id)
     try{
-    result = await fairydoll.findById( req.query.id)
+        
+    result = await Fairydoll.findById( req.query.id)
     res.render('fairydolldetail',
    { title: 'fairydoll Detail', toShow: result });
     }

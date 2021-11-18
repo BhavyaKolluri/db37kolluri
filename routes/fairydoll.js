@@ -4,6 +4,9 @@ var router = express.Router();
 /* GET fairydolls */
 router.get('/', fairydoll_controlers.fairydoll_view_all_Page);
 
+// GET request for one fairydoll.
+// router.get('/fairydoll/:id', fairydoll_controlers.fairydoll_detail);
+
 /* GET detail fairydoll page */
 router.get('/detail', fairydoll_controlers.fairydoll_view_one_Page);
 

@@ -8,14 +8,13 @@ var fairydoll_controller = require('../controllers/fairydoll');
 router.get('/', api_controller.api);
 /// fairydoll ROUTES ///
 // POST request for creating a fairydoll.
-router.post('/fairydolls', fairydoll_controller.fairydoll_create_post);
+router.post('/fairydoll', fairydoll_controller.fairydoll_create_post);
 // DELETE request to delete fairydoll.
-router.delete('/fairydolls/:id', fairydoll_controller.fairydoll_delete);
+router.delete('/fairydoll/:id', fairydoll_controller.fairydoll_delete);
 // PUT request to update fairydoll.
-router.put('/fairydolls/:id',
-fairydoll_controller.fairydoll_update_put);
+router.put('/fairydoll/:id', fairydoll_controller.fairydoll_update_put);
 // GET request for one fairydoll.
-router.get('/fairydolls/:id', fairydoll_controller.fairydoll_detail);
+router.get('/fairydoll/:id', fairydoll_controller.fairydoll_detail);
 // GET request for list of all fairydoll items.
-router.get('/fairydolls', fairydoll_controller.fairydoll_list);
+router.get('/fairydoll', fairydoll_controller.fairydoll_list);
 module.exports = router;
