@@ -8,9 +8,13 @@ block content
   div(class="container-fluid")
         div(class="row")
             each v,index in items 
+                div(class="card text-white bg-dark mb-3" class='col' class='card' class='card-body' class='card-text' onclick='buy('+index+')') #{o}
                 div(class="col-sm-2" onclick=`buy(${index})`) #{v.name}
                 div(class="col-sm-2" onclick=`buy(${index})`) #{v.color}
                 div(class="col-sm-2" onclick=`buy(${index})`) #{v.cost}
+                a(href="fairydoll/update/?id="+v.id) Update
+                a(href="fairydoll/detail/?id="+v.id) View
+                a(href="fairydoll/delete/?id="+v.id) Delete
   script.                
         function buy(intemNo)
         {

@@ -1,0 +1,53 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  if (toShow == null) 
+    h2 No instance to delete 
+  else 
+    - let fairydollid = toShow._id 
+    - let name = toShow.name 
+    - let color  = toShow.color 
+    - let cost  = toShow.cost 
+    - let actionid = "/resource/fairydoll/" + fairydollid 
+    script let actionid = "#{actionid}" 
+    div 
+      div.row 
+        div(class='fairydollAttr mr-3') fairydoll ID is: 
+        div #{fairydollid} 
+      div.row 
+        div(class='fairydollAttr mr-3') fairydoll Name is: 
+        div #{name } 
+      div.row 
+        div(class='fairydollAttr mr-3') fairydoll color is: 
+        div #{color } 
+      div.row 
+        div(class='fairydollAttr mr-3') fairydoll cost is: 
+        div #{cost } 
+ 
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
+ 
+  script. 
+    function cancel() { 
+      // Go back to the home pcost  for the fairydoll collection 
+      window.location.href='/fairydoll' 
+    } 
+  script. 
+    function deleteOnid() { 
+      console.log("starting delete") 
+      // delete first 
+      fetch(actionid, { 
+        method: 'DELETE'      // Do not need a body for the delete 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Delete succeded") 
+        window.location.href='/fairydoll' 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Delete failed " + error ) 
+      }); 
+    }
