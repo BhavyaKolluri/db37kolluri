@@ -2,21 +2,25 @@ extends layout
 
 block content
   h1= title
-  - let items = results
+  
   p Search Results Fairy Doll 
   p 
-  div(class="container-fluid")
-        div(class="row")
-            each v,index in items 
-                div(class="card text-white bg-dark mb-3" class='col' class='card' class='card-body' class='card-text' onclick='buy('+index+')') #{o}
-                div(class="col-sm-2" onclick=`buy(${index})`) #{v.name}
-                div(class="col-sm-2" onclick=`buy(${index})`) #{v.color}
-                div(class="col-sm-2" onclick=`buy(${index})`) #{v.cost}
-                a(href="fairydoll/update/?id="+v.id) Update
-                a(href="fairydoll/detail/?id="+v.id) View
-                a(href="fairydoll/delete/?id="+v.id) Delete
+  - let items = results
+    div(class="container-fluid")
+    div(class="row m-1")
+      each item in items
+        - let destination = `dispatch(\"/fairydoll/update?id=${item._id}\")`
+        div(class="row-sm-2", class="m-1") Item #{item.name}(#{item.color}) is #{item.cost}
+            button.btn( class="btn-primary ml-1", onclick= destination) Update
+
+  script.
+      function dispatch(path)
+      {
+        window.location.href=path
+      }
+
   script.                
         function buy(intemNo)
         {
-              alert(`you purchased Item ${intemNo+1}`)
+           alert(`you purchased Item ${intemNo+1}`)
         }
