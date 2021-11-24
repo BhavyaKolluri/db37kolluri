@@ -68,7 +68,6 @@ failed`);
     } 
 }; 
 
-
 // VIEWS
 // Handle a show all view
 exports.fairydoll_view_all_Page = async function(req, res) {
@@ -139,7 +138,6 @@ exports.fairydoll_update_Page = async function(req, res) {
     res.send(`{'error': '${err}'}`);
     }
    };
-
    
 exports.fairydoll_view_one_Page = async function(req, res) {
     console.log("single view for id " + req.query.id)

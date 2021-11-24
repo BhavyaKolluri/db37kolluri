@@ -1,18 +1,30 @@
-extends layout
+//- extends layout
 
+//- block content
+//-   h1= title
+//-   p Welcome to  #{title}
+//-   p This is Bhavya's heroku server
+//-   button(type="button", class="btn btn-secondary", onclick="update()") Press Me
+//-   <br>
+//-   <br>
+//-    div(id="target") Display
+//-    a(href = '/fairydoll') fairydoll Page link
+//-   |
+//-   script. 
+//-     let client_count = 0;
+//-     function update() {
+//-       client_count = client_count + 1;
+//-       document.getElementById("target").innerHTML = `Value now ${client_count}`  ;
+//-       }
+
+extends layout
 block content
-  h1= title
-  p Welcome to  #{title}
-  p This is Bhavya's heroku server
-  button(type="button", class="btn btn-secondary", onclick="update()") Press Me
-  <br>
-  <br>
-   div(id="target") Display
-   a(href = '/fairydoll') fairydoll Page link
-  |
-  script. 
-    let client_count = 0;
-    function update() {
-      client_count = client_count + 1;
-      document.getElementById("target").innerHTML = `Value now ${client_count}`  ;
-      }
+ if (!user)
+   a(href="/login") Login
+   br
+   a(href="/register") Register
+ if (user)
+   p You are currently logged in as #{user.username}
+   a(href="/fairydoll") Take me to fairy dolls
+   br
+   a(href="/logout") Logout
