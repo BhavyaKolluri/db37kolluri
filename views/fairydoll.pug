@@ -4,31 +4,27 @@ block content
   h1= title
   
   p Search Results Fairy Doll 
-  p 
-  - let items = results
-    div(class="container-fluid")
-    div(class="row m-1")
-      each item in items
-        - let destination = `dispatch(\"/fairydoll/update?id=${item._id}\")`
-        - let details = `dispatch(\"/fairydoll/detail?id=${item._id}\")` 
-        div(class="row-sm-2", class="m-1") Item #{item.name}(#{item.color}) is #{item.cost}
-        <br><br>
-            a(class="btn btn-success", href="/fairydoll/create") Create
-            <br>
-            span(class="btn btn-info", onclick= details) Details
-            <br>
-            a(class="btn btn-danger", href="/fairydoll/delete/?id="+item._id) Delete
-            <br>
-            button.btn( class="btn-primary ml-1", onclick= destination) Update
             
-
-  script.
+    div(class="container-fluid")
+        div(class="row")
+            - let destination1 = `dispatch(\"/fairydoll/create\")`
+            button.btn(class="btn-success ms-1", style="width: 150px" onclick= destination1) Create            
+            - let fairydoll = results
+            each v, index in fairydoll 
+                - let destination = `dispatch(\"/fairydoll/update?id=${v._id}\")`
+                - let destination2 = `dispatch(\"/fairydoll/delete?id=${v._id}\")`
+                - let destination3 = `dispatch(\"/fairydoll/detail?id=${v._id}\")`
+                div(class="row-sm-2", class="m-1") Item #{v.name} #{v.color} #{v.cost}
+                    button.btn(class="btn-primary ms-1", onclick= destination) Update
+                    button.btn(class="btn-info ms-1", onclick= destination3) Detail
+                    button.btn(class="btn-danger ms-1", onclick= destination2) Delete
+    script.
       function dispatch(path)
       {
         window.location.href=path
       }
 
-  script.                
+    script.                
         function buy(intemNo)
         {
            alert(`you purchased Item ${intemNo+1}`)
