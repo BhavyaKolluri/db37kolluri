@@ -19,4 +19,15 @@ router.get('/update', fairydoll_controlers.fairydoll_update_Page);
 // /* GET create fairydoll page */
 router.get('/delete', fairydoll_controlers.fairydoll_delete_Page);
 
+// const secured = (req, res, next) => {
+//     if (req.user){
+//      return next();
+//     }
+//     req.session.returnTo = req.originalUrl;
+//     res.redirect("/login");
+//     }
+
+/* GET update costume page */
+// router.get('/update', secured, costume_controlers.costume_update_Page);
+
 module.exports = router;
