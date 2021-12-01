@@ -10,8 +10,16 @@ block content
     div(class="row m-1")
       each item in items
         - let destination = `dispatch(\"/fairydoll/update?id=${item._id}\")`
+        - let details = `dispatch(\"/fairydoll/detail?id=${item._id}\")` 
         div(class="row-sm-2", class="m-1") Item #{item.name}(#{item.color}) is #{item.cost}
+        <br><br>
+            span(class="btn btn-info", onclick= details) Details
+            <br>
+            a(class="btn btn-danger", href="/fairydoll/delete/?id="+item._id) Delete
+            <br>
             button.btn( class="btn-primary ml-1", onclick= destination) Update
+            <br>
+            a(class="btn btn-danger", href="/fairydoll/create") Create
 
   script.
       function dispatch(path)
